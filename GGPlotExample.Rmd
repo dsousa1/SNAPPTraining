@@ -5,7 +5,51 @@ date: "2/20/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=F, warning = F, message = F}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=F, warning = F, message = F}
+library(leaflet)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(DT)
+library(scales) # install.packages("scales")
+library(patchwork) # install.packages("patchwork")
+```
+
+# Loading Data
+
+```{r, message = F, warning = F, echo = F}
+data_url <- "https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3Af119a05b-bbe7-4aea-93c6-85434dcb1c5e"
+
+#tryCatch looks for the data in the local enviornment, then pulls from internet if it can't find it
+esc <- tryCatch(
+    read.csv("data/escapement.csv", stringsAsFactors = FALSE),
+    error=function(cond) {
+        message(paste("Escapement file does not seem to exist, so get it from the KNB."))
+        esc <- read.csv(url(data_url, method = "libcurl"), stringsAsFactors = FALSE)
+        return(esc)
+    }
+)
+
+head(esc)
+```
+
+# Data Processing
+
+```{r, echo=F, warning = F, message = F}
+
+annual_esc = esc %>% 
+  separate(sampleDate, c("Year", "Month", "Day"), sep="-") %>% 
+  mutate(Year = as.numeric(Year),
+         Month = as.numeric(Month),
+         Day = as.numeric(Day)) %>% 
+  group_by(Species, SASAP.Region, Year) %>% 
+  summarize(escapement = sum(DailyCount)) %>% 
+  filter(Species %in% c("Chinook", "Sockeye", "Chum", "Coho", "Pink"))
+
+head(annual_esc)
 ```
 
