@@ -5,17 +5,83 @@ date: "2/20/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=F, warning = F, message = F}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+# What I am doing
 
+I am learning how to write functions!
+
+# Trivial first function
+```{r}
 plusone  = function(input){
+  #This function just adds 1 to the input value
   output = input + 1
   output
 }
 
-plusone(2)
+plusone(c(1:9))
+plusone(4)
+```
+
+# Challenge 1
+
+```{r}
+compute_percentage = function(in1, in2){
+  #compute percentage of 2 numbers
+output = in1*in2/100
+output
+}
+
+compute_percentage(1,2)
+```
+
+# Challenge 2
+
+```{r}
+compute_ratio = function(in1, in2, in3 = 100){
+  #allow for variable denominator
+output = in1*in2/in3
+output
+}
+
+compute_ratio(1,2)
+```
+
+# Challenge 3
+
+```{r}
+diff_squares = function(in1, in2){
+  #compute difference of two squares
+out = in1^2 - in2^2
+out
+}
+
+diff_squares(4,3)
+```
+
+# Challenge 4
+
+```{r}
+
+#' Difference and division of 2 squares
+#'
+#' @param in1 first square
+#' @param in2 second square
+#' @param in3 denominator square
+#'
+#' @return difference and division output
+#' @export 
+#'
+#' @examples diff_squares_div(4,3,5)
+diff_squares_div = function(in1, in2, in3){
+  #compute difference of two squares and then divide by a third square
+out = (in1^2 - in2^2)/in3^2
+out
+}
+
+diff_squares_div(4,3,5)
+diff_squares_div(2,1,0)
 ```
 
