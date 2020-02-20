@@ -1,0 +1,21 @@
+---
+title: "FunctionExample"
+author: "Sousa"
+date: "2/20/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+plusone  = function(input){
+  output = input + 1
+  output
+}
+
+plusone(2)
+```
+
