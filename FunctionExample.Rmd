@@ -85,3 +85,10 @@ diff_squares_div(4,3,5)
 diff_squares_div(2,1,0)
 ```
 
+
+
+# Call the script for the new function I wrote
+```{r}
+source("DiffSquaresDivFunction.R")
+diff_squares(3,4)
+```
