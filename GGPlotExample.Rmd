@@ -53,3 +53,19 @@ annual_esc = esc %>%
 head(annual_esc)
 ```
 
+
+# Data Visualization
+
+##First, look at the data
+```{r}
+ggplot(annual_esc, aes(x = Species, y = escapement )) +
+  geom_col()
+```
+
+Changing the color of the bars:
+```{r}
+ggplot(annual_esc, aes(x = Species, y = escapement )) +
+  geom_col(fill= "blue")
+```
+
+
