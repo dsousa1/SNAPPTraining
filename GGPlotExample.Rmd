@@ -56,7 +56,7 @@ head(annual_esc)
 
 # Data Visualization
 
-##First, look at the data
+## First, look at the data
 ```{r}
 ggplot(annual_esc, aes(x = Species, y = escapement )) +
   geom_col()
@@ -68,4 +68,51 @@ ggplot(annual_esc, aes(x = Species, y = escapement )) +
   geom_col(fill= "blue")
 ```
 
+Per region
+```{r}
+ggplot(annual_esc, aes(x = Species, y = escapement, fill = SASAP.Region )) +
+  geom_col()
+```
+
+### Looking into the Kodiak region
+```{r}
+annual_esc %>% 
+  filter(SASAP.Region == "Kodiak") %>% 
+  ggplot(aes(x = Year, y = escapement, color = Species)) + 
+  geom_line() +
+  geom_point() +
+  ggtitle("Salmon Species Escapement through Time") +
+  ylab("escapement") + 
+  xlab("year") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(legend.position = "bottom")
+```
+
+```{r}
+my_theme = theme_bw() + 
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank())
+
+annual_esc %>% 
+  filter(SASAP.Region == "Kodiak") %>% 
+  ggplot(aes(x = Year, y = escapement, color = Species)) + 
+  geom_line() +
+  geom_point() +
+  ggtitle("Salmon Species Escapement through Time") +
+  ylab("escapement") + 
+  xlab("year") +
+  my_theme
+```
+
+```{r}
+p1 = ggplot(annual_esc, aes(x=Species, y = escapement))+
+  geom_col()
+
+p2 = ggplot(annual_esc, aes(x=Species, y = escapement))+
+  geom_col(fill = "blue")
+
+p1 + p2
+```
 
