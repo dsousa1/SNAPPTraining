@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 I am learning how to write functions!
 
+
 # Trivial first function
 ```{r}
 plusone  = function(input){
@@ -24,6 +25,7 @@ plusone  = function(input){
 plusone(c(1:9))
 plusone(4)
 ```
+
 
 # Challenge 1
 
@@ -37,6 +39,7 @@ output
 compute_percentage(1,2)
 ```
 
+
 # Challenge 2
 
 ```{r}
@@ -49,6 +52,7 @@ output
 compute_ratio(1,2)
 ```
 
+
 # Challenge 3
 
 ```{r}
@@ -60,6 +64,7 @@ out
 
 diff_squares(4,3)
 ```
+
 
 # Challenge 4
 

@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+GGPlotExample.html
+
+# csv files
+*.csv
+
+# shapefile data directory
+data
