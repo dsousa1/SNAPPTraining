@@ -1,0 +1,30 @@
+---
+title: "SpatialDataExample"
+author: "Sousa"
+date: "2/21/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+# First load libraries
+```{r}
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(leaflet)
+library(scales)
+library(ggmap)
+```
+
+# Read in data
+```{r}
+## Read in shapefile using sf
+ak_regions <- read_sf("data/shapefiles/ak_regions_simp.shp")
+
+plot(ak_regions)  
+```
+
